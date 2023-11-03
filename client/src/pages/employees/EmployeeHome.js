@@ -31,7 +31,7 @@ function EmployeeHome() {
             }}
           >
             <img
-              src="https://cdn-icons.flaticon.com/png/512/2065/premium/2065169.png?token=exp=1660472205~hmac=65be9fe291719a7d5be1b80c75fc0989"
+              src="https://cdn-icons-png.flaticon.com/128/2196/2196227.png"
               alt=""
               height={50}
               width={50}
