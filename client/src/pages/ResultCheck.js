@@ -102,7 +102,7 @@ function ResultCheck() {
       {result && (
         <div className="mt-3 p-3 card">
           <h1 className="text-small">Examination : {result.examination}</h1>
-          <h1 className="text-small">Class : {result.class}</h1>
+          <h1 className="text-small">Year : {result.class}</h1>
         </div>
       )}
       <hr />

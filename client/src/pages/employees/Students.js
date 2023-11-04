@@ -66,7 +66,7 @@ function Students() {
 
   const columns = [
     {
-      title: "Class",
+      title: "Year",
       dataIndex: "class",
       key: "class",
     },

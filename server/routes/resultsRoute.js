@@ -7,15 +7,15 @@ const Student = require("../models/studentModel");
 //  add new result
 router.post("/add-result", authMiddleware, async (req, res) => {
   try {
-    const resultExists = await Result.findOne({
-      examination: req.body.examination,
-    });
-    if (resultExists) {
-      return res.status(200).send({
-        message: "Result already exists",
-        success: false,
-      });
-    }
+    // const resultExists = await Result.findOne({
+    //   examination: req.body.examination,
+    // });
+    // if (resultExists) {
+    //   return res.status(200).send({
+    //     message: "Result already exists",
+    //     success: false,
+    //   });
+    // }
     const newResult = new Result(req.body);
     await newResult.save();
     res.status(200).send({

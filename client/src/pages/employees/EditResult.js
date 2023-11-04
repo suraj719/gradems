@@ -159,7 +159,7 @@ function ResultInfo() {
         <>
           <div className="mt-3">
             <h1 className="text-small">Name : {result.examination}</h1>
-            <h1 className="text-small">Class : {result.class}</h1>
+            <h1 className="text-small">Year : {result.class}</h1>
             <h1 className="text-small">Date : {result.date}</h1>
           </div>
           <hr />

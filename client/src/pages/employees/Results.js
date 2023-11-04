@@ -71,7 +71,7 @@ function Results() {
       key: "examination",
     },
     {
-      title: "Class",
+      title: "Year",
       dataIndex: "class",
       key: "class",
     },
@@ -85,12 +85,12 @@ function Results() {
       key: "action",
       render: (text, record) => (
         <div className="d-flex gap-3">
-          <i
+          {/* <i
             className="ri-delete-bin-line"
             onClick={() => {
-              deleteStudent(record.rollNo);
+              deleteStudent(record._id);
             }}
-          ></i>
+          ></i> */}
           <i
             className="ri-pencil-line"
             onClick={() => {

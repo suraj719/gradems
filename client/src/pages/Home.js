@@ -80,7 +80,7 @@ function Home() {
                 >
                   <h1 className="text-medium">{result.examination}</h1>
                   <hr />
-                  <h1 className="text-small">Class : {result.class}</h1>
+                  <h1 className="text-small">Year : {result.class}</h1>
                 </div>
               </Col>
             );

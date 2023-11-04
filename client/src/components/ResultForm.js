@@ -49,7 +49,7 @@ function ResultForm() {
             </Form.Item>
           </Col>
           <Col span={8}>
-            <Form.Item label="Class" name="class">
+            <Form.Item label="Year" name="class">
               <input type="number" />
             </Form.Item>
           </Col>
