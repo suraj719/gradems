@@ -1,5 +1,5 @@
 import { Form, Input } from "antd";
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HideLoading, ShowLoading } from "../../redux/alerts";
@@ -9,20 +9,47 @@ import { useDispatch } from "react-redux";
 function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
+  const [ecode, setEcode] = useState("");
+  const [ver, setVer] = useState("");
+  const handleCode = async (e) => {
+    e.preventDefault();
+    await fetch(`http://localhost:5000/getcode`, {
+      method: "POST",
+      crossDomain: true,
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify({
+        email: email,
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setVer(data.verify);
+      });
+  };
   const onFinish = async (values) => {
-    try {
-      dispatch(ShowLoading());
-      const response = await axios.post("/api/employee/register", values);
-      dispatch(HideLoading());
-      if (response.data.success) {
-        toast.success(response.data.message);
-        navigate("/login");
-      } else {
-        toast.error(response.data.message);
+    // e.preventDefault()
+    if(ecode===ver) {
+      try {
+        dispatch(ShowLoading());
+        const response = await axios.post("/api/employee/register", values);
+        dispatch(HideLoading());
+        if (response.data.success) {
+          toast.success(response.data.message);
+          navigate("/login");
+        } else {
+          toast.error(response.data.message);
+        }
+      } catch (error) {
+        dispatch(HideLoading());
+        toast.error(error.message);
       }
-    } catch (error) {
-      dispatch(HideLoading());
-      toast.error(error.message);
+    } else{
+      toast.error("please enter the correct code")
     }
   };
   return (
@@ -38,6 +65,13 @@ function Register() {
         <Form.Item name="employeeId" label="Employee ID">
           <Input />
         </Form.Item>
+        <Form.Item name="Email" label="Email">
+          <Input type="email" onChange={(e)=>setEmail(e.target.value)}/>
+        </Form.Item>
+        <div style={{display:"flex",gap:"10px"}}>
+          <button onClick={handleCode} style={{width:"150px"}} className="primary text-white px-2">Get code</button>
+          <Input onChange={(e)=>setEcode(e.target.value)} type="text" placeholder="enter code"/>
+        </div>
         <Form.Item name="password" label="Password">
           <Input type="password" />
         </Form.Item>
