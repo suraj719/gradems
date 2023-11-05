@@ -27,8 +27,8 @@ app.post("/getcode", async (req, res) => {
       await transporter.sendMail({
         from: "gitty691@gmail.com",
         to: `${req.body.email}`,
-        subject: "ZKC Media account creation",
-        text: `You are trying to Creating an ZKC Media account, please use the code ${vcode} to create your account `,
+        subject: "KL account creation",
+        text: `You are trying to Create an employee account, please use the code ${vcode} to create your account `,
       });
       res.status(200).json({ verify: vcode });
     } catch (error) {
